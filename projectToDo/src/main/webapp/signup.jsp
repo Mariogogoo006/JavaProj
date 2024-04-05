@@ -10,49 +10,70 @@
 #signdiv{
     border:1px solid black;
     border-radius: 7px;
-    height: 350px;
-    width: 470px;
+    height: 360px;
+    width: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     position: absolute;
-    left: 400px;
-    top: 80px;
-    background-color:rgb(9,15,58);
-    line-height: 30p;
+    left: 450px;
+    top: 130px;
+    background-color: rgb(15,28,45);
+    line-height: 40p;
     color: white;
     font-family: sans-serif;
     font-size: large;
-}
-body{
-  background-image: url(https://pin.it/3vfEZQtx2);
-  background-color: rgb(228,189,221);
-}
-#form{
-  position: relative;
-  top: 5px;
-  left: 120px;
-}
-h2{
-  display: flex;
-  justify-content: center;
-  font-family: sans-serif;
+    box-shadow: 10px 10px 5px  rgb(2,6,9);
 
 }
+
+    body{
+  background-color: rgb(228,189,221);
+   /* background-image: url("https://64.media.tumblr.com/cf55c6240d4eac20a9f7f99710a1dc63/tumblr_ni57fkGTPX1smn4pqo8_1280.jpg");*/
+  background-image: url("https://i.pinimg.com/originals/c9/2f/25/c92f25ecc530424e4f27c438b10b7d30.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+
+}
+#form{
+  padding:70px;
+}
+h1{
+    display: flex;
+  justify-content: center;
+  font-family: sans-serif;
+  color: white;
+  text-shadow: 10px 10px 10px black;
+
+}
+#bt{
+    box-shadow: 10px 10px 5px  rgb(2,6,9);
+    display: flex;
+    justify-content: center;
+
+}
+#bt:hover{
+    transform: scale(1.2);
+    background-color: rgb(116,198,212);
+}
+#signdiv:hover{
+    transform: scale(1.1);
+}
+
 </style>
 </head>
 <body >
+    <h1>Sign Up Page:</h1>
 <div>
-    <h2>Sign Up Page:</h2>
+   
 	<div id="signdiv">
 	<form  id="form" action="saveuser" enctype="multipart/form-data" method="post">
-		      id: <input type="text" name="id"> <br>
 		<br>  Name:  <input type="text" name="name"> <br>
 		<br> Email: <input type="text" name="email"> <br>
 		<br> Contact: <input type="text" name="contact"> <br>
 		<br> Password: <input type="password" name="password"> <br>
 		<br> Image: <input type="file" name="image"> <br>
-		<br> <input type="submit" name="">
+		<br> <input id="bt" type="submit" name="">
 	</form>
 	
 	</div>

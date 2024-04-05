@@ -1,4 +1,4 @@
-package controler;
+ package controler;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -13,6 +13,8 @@ import javax.servlet.http.Part;
 
 import dao.Dao;
 import dto.User;
+
+
 @WebServlet("/saveuser")
 @MultipartConfig(maxFileSize =10*1024*1024)
 public class SaveUser extends HttpServlet {
@@ -20,7 +22,7 @@ public class SaveUser extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		int id = Integer.parseInt(req.getParameter("id"));
+//		int id = Integer.parseInt(req.getParameter("id"));
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
 		Long contact = Long.parseLong(req.getParameter("contact"));
@@ -28,25 +30,25 @@ public class SaveUser extends HttpServlet {
 		Part imagePart=req.getPart("image");
 		byte[] imagebytes=imagePart.getInputStream().readAllBytes();
 		
-		User user= new User(id, name, email, contact, password, imagebytes);
-		
-		Dao dao =new Dao();
-		{
-			int res;
-			try {
-				res = dao.saveUser(user);
-				if(res>0) {
-					resp.sendRedirect("login.jsp");
-				}
-				else {
-					resp.sendRedirect("signup.jsp");
-				}
-			} catch (ClassNotFoundException | SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+		Dao dao =new Dao();   
+		User user;
+		try {
+			user= new User(dao.getUserId(), name, email, contact, password, imagebytes);
+			int res = dao.saveUser(user);
+			if(res>0) {
+				resp.sendRedirect("login.jsp");
 			}
-			
-			
+			else {
+				resp.sendRedirect("signup.jsp");
+			}
+
+		}catch(ClassNotFoundException e){
+			e.printStackTrace();
+		}
+		catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+
 		}  
 		
 	}
